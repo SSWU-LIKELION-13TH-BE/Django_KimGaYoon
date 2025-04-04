@@ -10,26 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import logging
-
-LOGGING = {
-    'version': 1,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-        },
-    },
-}
-
-
-
-
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -145,26 +125,3 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'user.CustomUser'
-
-# Email 전송EmailBackend'
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# 메일을 호스트하는 서버
-EMAIL_HOST = 'smtp.gmail.com'
-
-# gmail과의 통신하는 포트
-EMAIL_PORT = '587'
-
-# 발신할 이메일
-# EMAIL_HOST_USER = '구글아이디@gmail.com'
-EMAIL_HOST_USER = '20221188@sungshin.ac.kr'
-
-# 발신할 메일의 비밀번호
-# EMAIL_HOST_PASSWORD = '구글비밀번호'
-EMAIL_HOST_PASSWORD = 'fdnz sfdg nbqv lgks'
-
-# TLS 보안 방법
-EMAIL_USE_TLS = True
-
-# 사이트와 관련한 자동응답을 받을 이메일 주소
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
-

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+    <h2>로그인</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label>사용자 ID</label>
+            <input type="text" name="username" id="username">
+        </div>
+        <div>
+            <label>비밀번호</label>
+            <input type="text" name="password" id="password">
+        </div>
+        <button type="submit">로그인</button> 
+        <a href="{% url 'password_reset' %}">
+            <button type="button">비밀번호 찾기</button>
+        </a>
+    </form>
+</body>
+</html>

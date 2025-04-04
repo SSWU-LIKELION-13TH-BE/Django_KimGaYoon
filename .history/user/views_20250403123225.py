@@ -40,6 +40,7 @@ def password_reset_view(request):
     return render(request, "password_reset.html")
 
 from django.core.mail import send_mail
+from django.core.mail.message import EmailMessage
 from django.http import HttpResponse
 
 def send_email(request):

@@ -39,8 +39,7 @@ def password_reset_view(request):
         return redirect('login')  # 비밀번호 초기화 후 이동할 URL
     return render(request, "password_reset.html")
 
-from django.core.mail import send_mail
-from django.http import HttpResponse
+from django.core.mail.message import EmailMessage
 
 def send_email(request):
     if request.method == "POST":
