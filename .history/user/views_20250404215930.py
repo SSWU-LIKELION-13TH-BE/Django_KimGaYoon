@@ -1,10 +1,8 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate, get_user_model
-from .forms import SignUpForm, PasswordResetForm
+from django.contrib.auth import login, logout, authenticate
+from .forms import SignUpForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
-
-User = get_user_model()
 
 def signup_view(request):
     if request.method == 'POST':

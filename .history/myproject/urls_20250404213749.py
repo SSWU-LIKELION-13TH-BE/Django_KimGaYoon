@@ -18,12 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-def redirect_to_home(request):
-    return redirect('home')
-
 urlpatterns = [
     path('user/', include('user.urls')),
     path('home/', include('user.urls')),
-    path('admin/', admin.site.urls),
-    path('', redirect_to_home),
 ]
