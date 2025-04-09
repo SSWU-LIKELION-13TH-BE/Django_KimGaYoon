@@ -23,7 +23,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("post_list")  # 로그인 성공 시 이동할 URL
+            return redirect("home")  # 로그인 성공 시 이동할 URL
         else:
             return render(request, "login.html", {"error": "로그인 정보가 올바르지 않습니다."})
     return render(request, "login.html")
