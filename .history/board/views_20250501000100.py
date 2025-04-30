@@ -5,8 +5,6 @@ from .models import Post, Comment, CommentLike
 from django.http import HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views.decorators.http import require_POST
-from django.db.models import Count
-
 
 @login_required(login_url='/user/login/') 
 def post_create(request):
