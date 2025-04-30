@@ -21,15 +21,7 @@ def post_create(request):
     return render(request, 'board/post_create.html', {'form': form})
 
 def post_list(request):
-    query = request.GET.get('q')  
-
-    if query:
-        posts = Post.objects.filter(title__icontains=query)
-    else:
-        posts = Post.objects.all()
-
-    posts = posts.order_by('-created_at')  # 여기서 정렬만 해줘야 함
-
+    posts = Post.objects.all().order_by('-created_at') 
     return render(request, 'board/post_list.html', {'posts': posts})
 
 @login_required(login_url='/user/login/?next=/board/')
