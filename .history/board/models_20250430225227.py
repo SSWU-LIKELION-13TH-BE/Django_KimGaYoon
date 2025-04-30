@@ -14,7 +14,6 @@ class Post(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     
     likes = models.ManyToManyField(get_user_model(), related_name='liked_posts', blank=True)
-    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
