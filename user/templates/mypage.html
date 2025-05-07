@@ -44,12 +44,22 @@
         {% endfor %}
         <button type="submit">저장</button>
     </form>
-        <a href="{% url 'password_reset' %}">
+    <a href="{% url 'password_reset' %}">
         <button type="button">비밀번호 재설정하기</button>
-        <a href="{% url 'my_posts' %}">
-            <button type="button">내가 작성한 글 보기</button>
-        </a>
+    </a>
     
+    <a href="{% url 'my_posts' %}">
+        <button type="button">내가 작성한 글 보기</button>
+    </a>
+    
+    <a href="{% url 'guestbook_list' %}">
+        <button type="button">내 방명록 보기</button>
+    </a>
+    
+    <a href="{% url 'guestbook_create' owner_id=request.user.id %}">
+        <button type="button">내 방명록에 글 남기기</button>
+    </a>
+        
 </a>
 </body>
 </html>

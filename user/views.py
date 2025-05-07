@@ -4,6 +4,10 @@ from .forms import SignUpForm, PasswordResetForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
+from .models import Guestbook
+from .forms import GuestbookForm
+from django.shortcuts import get_object_or_404
+
 
 User = get_user_model()
 
@@ -109,3 +113,23 @@ def mypage_view(request):
         form = MyPageUpdateForm(instance=request.user)
     return render(request, 'mypage.html', {'form': form})
 
+@login_required
+def guestbook_create(request, owner_id):
+    owner = get_object_or_404(User, id=owner_id)
+
+    if request.method == 'POST':
+        form = GuestbookForm(request.POST)
+        if form.is_valid():
+            guestbook = form.save(commit=False)
+            guestbook.owner = owner
+            guestbook.writer = request.user
+            guestbook.save()
+            return redirect('mypage')  # 또는 f'/user/guestbook/{owner.id}/' 로 리디렉션
+    else:
+        form = GuestbookForm()
+    return render(request, 'guestbook_form.html', {'form': form, 'owner': owner})
+
+@login_required
+def guestbook_list(request):
+    guestbooks = Guestbook.objects.filter(owner=request.user).order_by('-created_at')
+    return render(request, 'guestbook_list.html', {'guestbooks': guestbooks})
