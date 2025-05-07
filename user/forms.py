@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.forms import UserChangeForm
 from .models import CustomUser
+from .models import Guestbook
 
 class SignUpForm(UserCreationForm):
     email = forms.EmailField(required=True)
@@ -20,3 +21,11 @@ class MyPageUpdateForm(forms.ModelForm):
     class Meta:
         model = CustomUser
         fields = ['username', 'nickname', 'email', 'phone_number']
+
+class GuestbookForm(forms.ModelForm):
+    class Meta:
+        model = Guestbook
+        fields = ['message']
+        widgets = {
+            'message': forms.Textarea(attrs={'rows': 3, 'placeholder': '방명록을 작성하세요'})
+        }

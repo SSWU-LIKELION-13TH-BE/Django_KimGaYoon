@@ -1,0 +1,6 @@
+<h2>{{ owner.nickname }} 님에게 방명록 남기기</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">작성</button>
+</form>

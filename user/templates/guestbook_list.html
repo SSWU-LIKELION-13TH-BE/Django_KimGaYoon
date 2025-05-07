@@ -1,0 +1,8 @@
+<h2>내 방명록</h2>
+{% for entry in guestbooks %}
+    <p><strong>{{ entry.writer.nickname }}</strong>: {{ entry.message }}<br>
+    <small>{{ entry.created_at|date:"Y-m-d H:i" }}</small></p>
+    <hr>
+{% empty %}
+    <p>아직 방명록이 없습니다.</p>
+{% endfor %}
