@@ -1,0 +1,51 @@
+<!-- templates/user/mypage.html -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+    <style>
+        body {
+            max-width: 600px;
+            margin: 50px auto;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        h2 { text-align: center; }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label { margin-top: 15px; }
+        input {
+            padding: 10px;
+            font-size: 15px;
+        }
+        button {
+            margin-top: 30px;
+            padding: 10px;
+            background-color: #3e8ed0;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h2>내 정보 수정</h2>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+            {% if field.errors %}
+                <p style="color:red;">{{ field.errors }}</p>
+            {% endif %}
+        {% endfor %}
+        <button type="submit">저장</button>
+    </form>
+        <a href="{% url 'password_reset' %}">
+        <button type="button">비밀번호 재설정하기</button>
+</a>
+</body>
+</html>

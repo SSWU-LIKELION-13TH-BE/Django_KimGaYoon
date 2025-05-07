@@ -107,5 +107,5 @@ def mypage_view(request):
             return redirect('mypage')  # 저장 후 다시 마이페이지로 이동
     else:
         form = MyPageUpdateForm(instance=request.user)
-    return render(request, 'mypage.html', {'form': form})
+    return render(request, 'user/mypage.html', {'form': form})
 

@@ -16,7 +16,9 @@ class PasswordResetForm(forms.Form):
     email = forms.EmailField(label="이메일", required=True)
     new_password = forms.CharField(label="새 비밀번호", widget=forms.PasswordInput)
 
-class MyPageUpdateForm(forms.ModelForm):
-    class Meta:
-        model = CustomUser
-        fields = ['username', 'nickname', 'email', 'phone_number']
+class CustomUserUpdateForm(UserChangeForm):
+    password = None  # 비밀번호 수정은 제외
+
+class Meta:
+    model = CustomUser
+    fields = ('username', 'nickname', 'email', 'phone_number')

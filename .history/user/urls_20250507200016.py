@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import include, path
 from django.urls import path
-from .views import signup_view, login_view, logout_view, home_view, password_reset_view, mypage_view
+from .views import signup_view, login_view, logout_view, home_view, password_reset_view, update_profile_view
 from django.contrib.auth import views as auth_views
 
 
