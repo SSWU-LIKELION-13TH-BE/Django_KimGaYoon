@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate, get_user_model
 from .forms import SignUpForm, PasswordResetForm
+from .forms import CustomUserUpdateForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
@@ -94,18 +95,14 @@ def password_reset_view(request):
 
     return render(request, 'password_reset.html')
 
-from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-from .forms import MyPageUpdateForm
-
 @login_required
-def mypage_view(request):
+def update_profile_view(request):
     if request.method == 'POST':
-        form = MyPageUpdateForm(request.POST, instance=request.user)
+        form = CustomUserUpdateForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('mypage')  # 저장 후 다시 마이페이지로 이동
+            messages.success(request, '회원 정보가 성공적으로 수정되었습니다.')
+            return redirect('home')  # 수정 후 이동할 URL
     else:
-        form = MyPageUpdateForm(instance=request.user)
-    return render(request, 'mypage.html', {'form': form})
-
+        form = CustomUserUpdateForm(instance=request.user)
+    return render(request, 'update_profile.html', {'form': form})
