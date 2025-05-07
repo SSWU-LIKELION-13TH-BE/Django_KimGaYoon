@@ -32,7 +32,7 @@
     </style>
 </head>
 <body>
-    <h2>내 정보 수정</h2>
+    <h2>마이페이지</h2>
     <form method="post">
         {% csrf_token %}
         {% for field in form %}
@@ -46,6 +46,10 @@
     </form>
         <a href="{% url 'password_reset' %}">
         <button type="button">비밀번호 재설정하기</button>
+        <a href="{% url 'my_posts' %}">
+            <button type="button">내가 작성한 글 보기</button>
+        </a>
+    
 </a>
 </body>
 </html>

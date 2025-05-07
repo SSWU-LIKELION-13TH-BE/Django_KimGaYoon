@@ -1,3 +1,8 @@
 venv
 "*.pyc"
 db.sqlite3
+.history/
+__pycache__/
+*.env 
+.vscode/  
+*.log      

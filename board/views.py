@@ -143,3 +143,8 @@ def toggle_comment_like(request):
         'liked': liked,
         'like_count': comment.like_count()
     })
+
+@login_required
+def my_posts(request):
+    posts = Post.objects.filter(author=request.user).order_by('-created_at')
+    return render(request, 'board/my_posts.html', {'posts': posts})

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>내가 쓴 글</title>
+</head>
+<body>
+    <h1>내가 작성한 게시글</h1>
+    <p><a href="{% url 'post_create' %}">➕ 새 글 작성하기</a></p>
+    <hr>
+
+    {% for post in posts %}
+        <h2><a href="{% url 'post_detail' post.id %}">{{ post.title }}</a></h2>
+        <p><strong>작성일:</strong> {{ post.created_at|date:"Y-m-d H:i" }}</p>
+        <p><strong>기술 스택:</strong> {{ post.tech_stack }}</p>
+        <p><strong>조회수:</strong> {{ post.views }} / ❤️ {{ post.likes.count }}</p>
+        <p>
+            <a href="{% url 'post_edit' post.id %}">✏️ 수정</a> |
+            <a href="{% url 'post_delete' post.id %}">🗑️ 삭제</a>
+        </p>
+        <hr>
+    {% empty %}
+        <p>작성한 게시글이 없습니다.</p>
+    {% endfor %}
+</body>
+</html>
