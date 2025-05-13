@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
+    {% load socialaccount %}
 </head>
 <body>
     <h2>로그인</h2>
@@ -21,5 +22,14 @@
             <button type="button">비밀번호 찾기</button>
         </a>
     </form>
+<hr>
+<h3>소셜 로그인</h3>
+<a href="{% provider_login_url 'naver' %}">
+    <button type="button">네이버로 로그인</button>
+</a>
+<a href="{% provider_login_url 'kakao' %}">
+    <button type="button">카카오로 로그인</button>
+</a>
+
 </body>
 </html>
